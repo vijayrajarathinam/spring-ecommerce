@@ -7,17 +7,20 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="discoveryservice" />
+        <module name="customerservice" />
         <module name="configserver" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="configserver" target="17" />
+      <module name="customerservice" target="17" />
       <module name="discoveryservice" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="configserver" options="-parameters" />
+      <module name="customerservice" options="-parameters" />
       <module name="discoveryservice" options="-parameters" />
     </option>
   </component>

@@ -1,8 +1,18 @@
-## Spring boot ecommerce demo project
+## Spring boot microservice - ecommerce - mono repo architecture
 
-* spring boot
+* spring boot [microservices]
+  * customer service
+  * product service
+  * order service
+  * payment service
+  * notification service
 * spring cloud
   * config server
+  * gateway service
   * service discovery
-* keycloak [for authentication]
 * docker
+  * postgres
+  * mongodb
+  * mail dev [for email]
+  * keycloak [for authentication]
+  * zipkin

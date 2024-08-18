@@ -10,13 +10,17 @@
         <module name="discoveryservice" />
         <module name="configserver" />
         <module name="customerservice" />
+        <module name="paymentservice" />
         <module name="productservice" />
+        <module name="orderservice" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="configserver" target="17" />
       <module name="customerservice" target="17" />
       <module name="discoveryservice" target="17" />
+      <module name="orderservice" target="17" />
+      <module name="paymentservice" target="1.5" />
       <module name="productservice" target="17" />
     </bytecodeTargetLevel>
   </component>
@@ -25,6 +29,7 @@
       <module name="configserver" options="-parameters" />
       <module name="customerservice" options="-parameters" />
       <module name="discoveryservice" options="-parameters" />
+      <module name="orderservice" options="-parameters" />
       <module name="productservice" options="-parameters" />
     </option>
   </component>

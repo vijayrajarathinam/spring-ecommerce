@@ -8,6 +8,7 @@ import com.ecommerce.orderservice.producer.entities.OrderConfirmation;
 import com.ecommerce.orderservice.repositories.OrderRepository;
 import com.ecommerce.orderservice.requests.OrderItemRequest;
 import com.ecommerce.orderservice.requests.OrderRequest;
+import com.ecommerce.orderservice.requests.PaymentRequest;
 import com.ecommerce.orderservice.requests.PurchaseRequest;
 import com.ecommerce.orderservice.responses.OrderResponse;
 import jakarta.persistence.EntityNotFoundException;
@@ -27,6 +28,7 @@ public class OrderService {
     private final OrderMapper orderMapper;
     private final OrderItemService orderItemService;
     private final OrderProducer orderProducer;
+    private final PaymentService paymentService;
 
     // step 1: check for the customer -> OpenFeign
     // step 2: purchase the product -> RestTemplate
@@ -52,10 +54,15 @@ public class OrderService {
             ));
         }
 
-        //todo: start payment
+        //start payment
+        var paymentRequest = new PaymentRequest(
+                orderRequest.totalAmount(),
+                orderRequest.paymentMethod(),
+                order.getId(), order.getReference(), customer
+        );
+        paymentService.requestOrderPayment(paymentRequest);
 
-
-        //todo: order confirmation
+        //order confirmation
         orderProducer.sendOrderConfirmation(new OrderConfirmation(
                 order.getReference(),
                 order.getTotalAmount(),

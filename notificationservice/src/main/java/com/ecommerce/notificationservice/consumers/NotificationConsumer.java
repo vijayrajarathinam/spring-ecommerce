@@ -10,7 +10,7 @@ import com.ecommerce.notificationservice.services.EmailService;
 import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.kafka.annotation.KafkaListener;
+//import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -23,7 +23,7 @@ public class NotificationConsumer {
     private final NotificationRepository notificationRepository;
     private final EmailService emailService;
 
-    @KafkaListener(topics = "PAYMENT_TOPIC")
+//    @KafkaListener(topics = "PAYMENT_TOPIC")
     public void consumePaymentSuccess(PaymentConfirmation paymentConfirmation) throws MessagingException {
         log.info(String.format("Consuming message from payment topic :: %s", paymentConfirmation));
         notificationRepository.save(Notification.builder()
@@ -42,7 +42,7 @@ public class NotificationConsumer {
         );
     }
 
-    @KafkaListener(topics = "order-topic")
+//    @KafkaListener(topics = "order-topic")
     public void consumeOrderSuccess(OrderConfirmation orderConfirmation) throws MessagingException {
         log.info(String.format("Consuming message from order topic :: %s", orderConfirmation));
         notificationRepository.save(Notification.builder()
